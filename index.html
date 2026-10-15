@@ -65,7 +65,8 @@ section{padding-block:clamp(3rem,8vw,5rem)}
 
 /* hero */
 .hero{padding-block:clamp(2rem,6vw,4rem) clamp(2.5rem,6vw,4rem)}
-.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+.hero .wrap{display:grid;grid-template-columns:1fr}
+.hero .copy{max-width:46rem}
 .hero h1{font-size:clamp(2.8rem,9vw,5.6rem);overflow-wrap:break-word}
 .hero h1 em{font-style:normal;color:var(--red)}
 .hero .copy{display:grid;gap:1.4rem;min-width:0}
@@ -118,6 +119,15 @@ section{padding-block:clamp(3rem,8vw,5rem)}
 .quip strong{color:var(--taxi)}
 .nyc{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;font-family:var(--mono);font-size:.8rem;color:#9aa6bf;border-top:1px solid #26314a;padding-top:1rem}
 .nyc b{color:var(--taxi)}
+
+/* clock + course band */
+.combo{display:grid;grid-template-columns:1.1fr .9fr;gap:1.2rem;align-items:stretch}
+.combo > *{min-width:0}
+.combo .cell b{font-size:clamp(1.8rem,5vw,3.4rem)}
+.coursecard{background:var(--card);border:2px solid var(--ink);border-radius:18px;padding:clamp(1.5rem,4vw,2.2rem);display:grid;gap:1.2rem;align-content:center}
+.coursecard .totals{grid-template-columns:repeat(2,minmax(0,1fr))}
+.subhead{font-size:1.2rem;margin-top:2rem;color:var(--muted)}
+@media (max-width:900px){.combo{grid-template-columns:1fr}}
 
 /* course progress */
 .course{display:grid;gap:1.6rem}
@@ -173,14 +183,15 @@ input[type=range]{width:100%;accent-color:var(--red)}
 .sample{font-family:var(--mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
 
 /* tiers */
-.tiers{display:grid;grid-template-columns:repeat(auto-fill,minmax(14rem,1fr));gap:1rem;margin-top:2rem}
+.tiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1rem}
+@media (max-width:620px){.tiers{grid-template-columns:1fr}}
 .tier{border-top:3px solid var(--ink);padding-top:.8rem;display:grid;gap:.35rem;align-content:start}
 .tier .amt{font-family:var(--display);font-weight:900;font-size:2.4rem;line-height:1;font-variant-numeric:tabular-nums}
 .tier .nm{font-weight:800;text-transform:uppercase;font-size:.85rem;letter-spacing:.08em;color:var(--red)}
 .tier p{font-size:.95rem;color:var(--muted)}
 
 /* sponsors */
-.sponsors{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.2rem;margin-top:2rem}
+.sponsors{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.2rem;margin-top:1rem}
 .pkg.sole{background:var(--ink);border-color:var(--ink);transform:rotate(1deg)}
 .pkg.sole .amt,.pkg.sole p{color:var(--paper)}
 .pkg.sole .nm{color:var(--taxi)}
@@ -255,65 +266,49 @@ footer .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:2rem}
         <p class="fine">All donations go straight to Keep a Child Alive. None of it goes to my physio, though he has asked.</p>
       </div>
 
-      <div class="bib" aria-label="Race bib for AJ, number 52">
-        <i class="pin a"></i><i class="pin b"></i><i class="pin c"></i><i class="pin d"></i>
-        <div class="bib-top"><span>Marathon 2027</span><span>Wave: last</span></div>
-        <div class="bib-num">52</div>
-        <div class="bib-name">AJ "Guts" Priester</div>
-        <div class="bib-band"><i></i><i></i></div>
-        <div class="bib-strip"><span>Age group <b>M50–54</b></span><span>Corral <b>Z</b></span><span>Medical <b>On file</b></span></div>
-      </div>
 
     </div>
   </section>
 
   <section id="countdown" style="padding-top:0">
-    <div class="wrap">
+    <div class="wrap combo">
       <div class="clock" role="timer" aria-live="off">
-        <div class="clock-head">
-          <div class="stack" style="gap:.6rem">
-            <p class="eyebrow">Start gun · Tokyo Marathon · Sun 7 March 2027, 9:10am JST</p>
-            <h2>Time until Dad regrets this</h2>
-          </div>
+        <div class="stack" style="gap:.6rem">
+          <p class="eyebrow">Start gun · Tokyo · Sun 7 March 2027, 9:10am JST</p>
+          <h2>Time until Dad regrets this</h2>
         </div>
         <div class="digits">
           <div class="cell"><b id="d">000</b><span>Days</span></div>
           <div class="cell"><b id="h">00</b><span>Hours</span></div>
-          <div class="cell"><b id="m">00</b><span>Minutes</span></div>
-          <div class="cell"><b id="s">00</b><span>Seconds</span></div>
+          <div class="cell"><b id="m">00</b><span>Mins</span></div>
+          <div class="cell"><b id="s">00</b><span>Secs</span></div>
         </div>
         <p class="quip" id="quip"><strong>Training status:</strong> loading excuses…</p>
         <div class="nyc">
           <span>Then New York: <b id="nyc">— days</b> to Sun 7 Nov 2027</span>
-          <span>Age at Tokyo: <b>52</b></span>
-          <span>Age at New York: <b>53</b>, and feeling every one</span>
+          <span>Age at Tokyo <b>52</b> · New York <b>53</b></span>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section id="course" style="padding-top:0">
-    <div class="wrap course">
-      <div class="stack">
-        <p class="eyebrow">The fundraising course</p>
-        <h2>$50,000 is 42.195 km</h2>
-        <p class="lede">Every $1,185 moves Dad one kilometre down the course. He has trained for this exact amount of movement.</p>
-      </div>
-      <div class="totals">
-        <div class="total"><div class="k">Raised so far</div><div class="v" id="raised">$0</div></div>
-        <div class="total"><div class="k">Goal</div><div class="v">$50,000</div></div>
-        <div class="total alt"><div class="k">If Dad fails, KCA gets</div><div class="v" id="double">$0</div></div>
-      </div>
-      <div>
-        <div class="track" aria-hidden="true">
-          <div class="road"><i id="fill"></i></div>
-          <div class="runner" id="runner">
-            <svg viewBox="0 0 56 56"><circle cx="28" cy="28" r="22" fill="var(--ink)"/><text x="28" y="35" text-anchor="middle" font-family="Big Shoulders Display, Impact, sans-serif" font-weight="900" font-size="20" fill="var(--paper)">AJ</text></svg>
+      <div class="coursecard" id="course">
+        <div class="stack" style="gap:.5rem">
+          <p class="eyebrow">The fundraising course</p>
+          <h2>$50,000 is 42.195 km</h2>
+        </div>
+        <div class="totals">
+          <div class="total"><div class="k">Raised of $50,000</div><div class="v" id="raised">$0</div></div>
+          <div class="total alt"><div class="k">If Dad fails, KCA gets</div><div class="v" id="double">$0</div></div>
+        </div>
+        <div>
+          <div class="track" aria-hidden="true">
+            <div class="road"><i id="fill"></i></div>
+            <div class="runner" id="runner">
+              <svg viewBox="0 0 56 56"><circle cx="28" cy="28" r="22" fill="var(--ink)"/><text x="28" y="35" text-anchor="middle" font-family="Big Shoulders Display, Impact, sans-serif" font-weight="900" font-size="20" fill="var(--paper)">AJ</text></svg>
+            </div>
           </div>
+          <div class="kms"><span>Start</span><span>21.1 km</span><span>Finish</span></div>
         </div>
-        <div class="kms"><span>Start</span><span>10 km</span><span>21.1 km</span><span>30 km</span><span>Finish</span></div>
+        <p class="status" id="status"></p>
       </div>
-      <p class="status" id="status"></p>
     </div>
   </section>
 
@@ -322,9 +317,7 @@ footer .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:2rem}
       <div class="copy">
         <p class="eyebrow">Double or nothing</p>
         <h2>You literally cannot lose. I can.</h2>
-        <p>Donate any amount. If I cross both finish lines inside the cut-off, Keep a Child Alive keeps your donation. If I don't, I match the entire total raised, so every dollar counts twice.</p>
-        <p>If I don't make it at all, my estate pays. My children are aware. They have started leaving obstacles on the stairs.</p>
-        <p class="fine">The pledge is signed, witnessed and filed with my will. Full wording at the bottom of the page.</p>
+        <p>If I finish both races, Keep a Child Alive keeps your donation. If I don't, I match the entire total, so every dollar counts twice. Signed, witnessed and filed with my will.</p>
       </div>
       <div class="ledger">
         <table>
@@ -417,60 +410,38 @@ footer .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:2rem}
     </div>
   </section>
 
-  <section id="log" style="padding-top:0">
-    <div class="wrap">
-      <p class="eyebrow">The Dad Report</p>
-      <h2>Training log</h2>
-      <p class="lede" style="margin-top:1rem">Filed weekly, in the format Dad knows best: the quarterly update.</p>
-      <div class="log">
-        <p class="sample">Sample entries · real reports start at launch</p>
-        <div class="entry"><span class="wk">Week 1</span><p>Kilometres up 100% on last week, which was zero. Knees have issued a profit warning. Management remains confident.</p></div>
-        <div class="entry"><span class="wk">Week 2</span><p>Bought shoes that cost more than my first car. They have not yet made me faster. Escalated to the retailer.</p></div>
-        <div class="entry"><span class="wk">Week 3</span><p>Ivy and Richie ran with me. Ivy finished, stretched and bought coffee. Richie filmed my arrival. The footage is under legal review.</p></div>
-      </div>
-    </div>
-  </section>
 
-  <section id="tiers" style="padding-top:0">
+  <section id="give" style="padding-top:0">
     <div class="wrap">
       <p class="eyebrow">Ways to give</p>
-      <h2>Pick your tier</h2>
+      <h2>Pick your tier. Or your revenge.</h2>
+      <h3 class="subhead">For people</h3>
       <div class="tiers">
-        <div class="tier"><span class="amt">$25</span><span class="nm">Water station</span><p>Your name on the site. I'll think of you somewhere around km 31.</p></div>
-        <div class="tier"><span class="amt">$52</span><span class="nm">The birthday</span><p>One dollar per year of Dad. A shout-out in the next Dad Report.</p></div>
-        <div class="tier"><span class="amt">$100</span><span class="nm">Hamstring sponsor</span><p>Choose which body part I dedicate a training run to.</p></div>
+        <div class="tier"><span class="amt">$52</span><span class="nm">The birthday</span><p>One dollar per year of Dad, and a shout-out on Instagram.</p></div>
         <div class="tier"><span class="amt">$250</span><span class="nm">Race marshal</span><p>Write the message the kids read to me at halfway.</p></div>
-        <div class="tier"><span class="amt">$500</span><span class="nm">The bookmaker</span><p>Set my target time. Beat it, you get a video. Miss it, I do your forfeit.</p></div>
         <div class="tier"><span class="amt">$1,000</span><span class="nm">Estate planner</span><p>Your name on my race singlet, plus a framed copy of the pledge.</p></div>
       </div>
-    </div>
-  </section>
-
-  <section id="sponsors" style="padding-top:0">
-    <div class="wrap">
-      <p class="eyebrow">Corporate partnerships</p>
-      <h2>Put your brand on Dad. Or don't.</h2>
-      <p class="lede" style="margin-top:1rem">Four packages for businesses, each one a donation to Keep a Child Alive. Choose based on how much you value your reputation.</p>
+      <h3 class="subhead">For businesses</h3>
       <div class="sponsors">
         <article class="pkg">
           <span class="amt">$5,000</span>
           <span class="nm">The Sponsor</span>
-          <p>Your logo on my chest for both races. Millions of spectators, thousands of photos, and every one of them shows a sweaty 52-year-old wearing your brand. Results not guaranteed.</p>
+          <p>Your logo on my chest for both races. Every photo shows a sweaty 52-year-old wearing your brand. Results not guaranteed.</p>
         </article>
         <article class="pkg mid">
           <span class="amt">$10,000</span>
           <span class="nm">The Distance Clause</span>
-          <p>I promise never to wear your logo. Your brand will not be photographed with me collapsing on the Queensboro Bridge. Some reputations are worth protecting.</p>
+          <p>I promise never to wear your logo. Your brand will not be photographed with me collapsing on the Queensboro Bridge.</p>
         </article>
         <article class="pkg hot">
           <span class="amt">$15,000</span>
           <span class="nm">The Hostile Takeover</span>
-          <p>I wear your competitor's logo instead. Their name, my face, km 38, the medical tent. You can't buy marketing like this. Actually you can. It's $15,000.</p>
+          <p>I wear your competitor's logo instead. Their name, my face, km 38, the medical tent.</p>
         </article>
         <article class="pkg sole">
           <span class="amt">$20,000</span>
           <span class="nm">The Sole Partner</span>
-          <p>Your logo on the soles of my sneakers. Invisible while I'm running. Seen by millions if the video of paramedics loading me into the ambulance goes viral. Feet up, brand up.</p>
+          <p>Your logo on the soles of my sneakers. Seen by millions if the video of paramedics loading me into the ambulance goes viral.</p>
         </article>
       </div>
       <p class="fine" style="margin-top:1rem">Logos subject to race kit rules, good taste and my lawyer's nerves. Competitor chosen by you, approved by Dad.</p>
@@ -500,10 +471,8 @@ footer .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:2rem}
       <h2>Frequently asked</h2>
       <div class="faq">
         <details><summary>Will you actually die?</summary><p>Statistically, very unlikely. Emotionally, around km 35, yes. I've had a full medical and my GP has cleared me, with a look on his face I'm still thinking about.</p></details>
-        <details><summary>Why should I donate if you're going to finish?</summary><p>Because the money goes to children who need it either way. The bet only decides whether it goes once or twice.</p></details>
         <details><summary>What counts as "finishing"?</summary><p>Crossing the official finish line of both races inside the cut-off. Crawling counts. Being carried does not.</p></details>
         <details><summary>Is my donation tax deductible?</summary><p>Keep a Child Alive is a US 501(c)(3) charity, so donations get a US receipt. Australian donors can't currently claim a tax deduction. I'm working with KCA on an Australian option and will update this page if one opens up.</p></details>
-        <details><summary>Why are your children doing this?</summary><p>For the cause, and to make sure someone is there to film it when I sit down on the Brooklyn Bridge.</p></details>
       </div>
     </div>
   </section>
