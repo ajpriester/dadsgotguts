@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="A 52-year-old dad runs the Tokyo and New York marathons with two of his children to raise $50,000 for Keep a Child Alive. If he doesn't finish, he donates double.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dadsgotguts.ajpriester.com/">
+<meta property="og:title" content="Dad's Got Guts: Tokyo + New York 2027">
+<meta property="og:description" content="Two marathons. One 52-year-old dad. $50,000 for Keep a Child Alive, or he pays double. Bet against him.">
+<meta property="og:image" content="https://dadsgotguts.ajpriester.com/aj-fresh.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Dad's Got Guts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Archivo:ital,wght@0,400;0,600;0,800;1,400&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: a race-day kit — the hero is a pinned race bib, the countdown is the start-line clock, the fundraising bar is the 42.195 km course. */
+:root{
+  --paper:#f3f5f7;        /* bib stock, cool not cream */
+  --card:#ffffff;
+  --ink:#16213a;          /* bib-number navy */
+  --muted:#5a6478;
+  --line:#d5dbe4;
+  --red:#e2401c;          /* Tokyo start-arch red */
+  --taxi:#ffc21a;         /* NYC cab yellow */
+  --clock:#0f1626;        /* race clock housing */
+  --led:#ff5a2e;
+  --on-accent:#ffffff;
+  --display:"Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --body:"Archivo", "Helvetica Neue", Arial, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0e1422;--card:#172036;--ink:#eef1f6;--muted:#a3adc2;--line:#2a3550;
+  --red:#ff5a35;--taxi:#ffcc3d;--clock:#070b14;--led:#ff6a40;--on-accent:#0e1422;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0e1422;--card:#172036;--ink:#eef1f6;--muted:#a3adc2;--line:#2a3550;
+  --red:#ff5a35;--taxi:#ffcc3d;--clock:#070b14;--led:#ff6a40;--on-accent:#0e1422;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1rem;line-height:1.55;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--taxi);outline-offset:2px}
+.wrap{max-width:68rem;margin:0 auto;padding-inline:clamp(1rem,4vw,2rem)}
+h1,h2,h3{font-family:var(--display);font-weight:900;line-height:.95;letter-spacing:.01em;text-transform:uppercase;text-wrap:balance;margin:0}
+h2{font-size:clamp(2.2rem,6vw,3.6rem)}
+h3{font-size:1.6rem}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--red);font-weight:700}
+section{padding-block:clamp(3rem,8vw,5rem)}
+.lede{max-width:36rem;color:var(--muted);font-size:1.075rem}
+.stack{display:grid;gap:1rem}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--paper);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.7rem}
+.logo{font-family:var(--display);font-weight:900;font-size:1.5rem;text-transform:uppercase;letter-spacing:.02em;text-decoration:none}
+.logo span{color:var(--red)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--red);color:var(--on-accent);font-weight:800;text-decoration:none;padding:.8rem 1.3rem;border-radius:999px;font-size:1rem;border:0;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px) rotate(-1deg)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn.sm{padding:.55rem 1rem;font-size:.9rem}
+
+/* hero */
+.hero{padding-block:clamp(2rem,6vw,4rem) clamp(2.5rem,6vw,4rem)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+.hero h1{font-size:clamp(2.8rem,9vw,5.6rem);overflow-wrap:break-word}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero .copy{display:grid;gap:1.4rem;min-width:0}
+.ctas{display:flex;flex-wrap:wrap;gap:.75rem}
+.fine{font-size:.85rem;color:var(--muted)}
+
+.bib{position:relative;background:var(--card);border:2px solid var(--ink);border-radius:14px;padding:1.6rem 1.6rem 1.2rem;transform:rotate(2.5deg);box-shadow:0 18px 40px -18px rgba(10,20,40,.35);max-width:26rem;justify-self:center;width:100%}
+.pin{position:absolute;width:16px;height:16px;border-radius:50%;background:var(--line);box-shadow:inset 0 0 0 4px var(--card),0 0 0 2px var(--muted)}
+.pin.a{top:10px;left:10px}.pin.b{top:10px;right:10px}.pin.c{bottom:10px;left:10px}.pin.d{bottom:10px;right:10px}
+.bib-top{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding-inline:1rem;color:var(--muted)}
+.bib-num{font-family:var(--display);font-weight:900;font-size:clamp(7rem,22vw,10.5rem);line-height:.85;text-align:center;letter-spacing:-.02em;margin-block:.4rem}
+.bib-name{text-align:center;font-family:var(--display);font-weight:700;font-size:1.6rem;text-transform:uppercase;letter-spacing:.08em}
+.bib-strip{margin-top:1rem;border-top:2px dashed var(--line);padding-top:.8rem;display:flex;justify-content:space-between;gap:.5rem;font-family:var(--mono);font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.bib-strip b{color:var(--red)}
+.bib-band{display:flex;height:10px;border-radius:4px;overflow:hidden;margin-top:.6rem}
+.bib-band i{flex:1}.bib-band i:nth-child(1){background:var(--red)}.bib-band i:nth-child(2){background:var(--taxi)}
+
+/* dad-cam slider */
+.dadcam{display:grid;gap:.7rem}
+.frame{position:relative;aspect-ratio:3/4;max-width:100%;border-radius:8px;overflow:hidden;background:var(--paper)}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 25%;transition:opacity .35s ease}
+.frame img.off{opacity:0}
+.minibib{position:absolute;top:12px;left:12px;background:#fff;color:#16213a;border:2px solid #16213a;border-radius:6px;padding:.2rem .6rem .1rem;font-family:var(--display);font-weight:900;font-size:1.8rem;line-height:1;text-align:center;transform:rotate(-6deg)}
+.minibib small{display:block;font-family:var(--mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
+.meter{position:absolute;right:12px;bottom:12px;background:var(--clock);color:var(--led);font-family:var(--mono);font-weight:700;font-size:1.1rem;padding:.35rem .7rem;border-radius:8px;font-variant-numeric:tabular-nums}
+.slide{display:grid;gap:.4rem;background:var(--paper);border-radius:10px;padding:.8rem .8rem .6rem}
+.slide label{display:flex;justify-content:space-between;align-items:center;gap:.5rem;font-family:var(--display);font-weight:900;font-size:1.15rem;text-transform:uppercase;letter-spacing:.02em;color:var(--ink)}
+.slide label .hint{font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.1em;color:var(--on-accent);background:var(--red);padding:.25rem .55rem;border-radius:999px;animation:nudge 1.4s ease-in-out infinite}
+.slide.used label .hint{display:none}
+@keyframes nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}}
+#dist{-webkit-appearance:none;appearance:none;width:100%;height:44px;background:transparent;cursor:grab;margin:0}
+#dist:active{cursor:grabbing}
+#dist::-webkit-slider-runnable-track{height:16px;border-radius:999px;background:repeating-linear-gradient(90deg,var(--line) 0 18px,var(--paper) 18px 26px);border:2px solid var(--ink)}
+#dist::-moz-range-track{height:16px;border-radius:999px;background:repeating-linear-gradient(90deg,var(--line) 0 18px,var(--paper) 18px 26px);border:2px solid var(--ink)}
+#dist::-webkit-slider-thumb{-webkit-appearance:none;width:40px;height:40px;margin-top:-14px;border-radius:50%;background:var(--red);border:3px solid var(--card);box-shadow:0 0 0 2px var(--ink),0 4px 10px rgba(0,0,0,.25)}
+#dist::-moz-range-thumb{width:34px;height:34px;border-radius:50%;background:var(--red);border:3px solid var(--card);box-shadow:0 0 0 2px var(--ink)}
+#dist:focus-visible{outline:3px solid var(--taxi);outline-offset:4px;border-radius:999px}
+.dist-note{font-weight:600;font-size:.95rem;min-height:3em}
+
+/* race clock */
+.clock{background:var(--clock);color:#fff;border-radius:18px;padding:clamp(1.5rem,4vw,2.5rem);display:grid;gap:1.5rem}
+.clock .eyebrow{color:var(--taxi)}
+.clock-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:1rem}
+.clock-head h2{color:#fff}
+.digits{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.4rem,2vw,1rem)}
+.cell{background:#1b2438;border-radius:10px;padding:clamp(.7rem,2vw,1.2rem) .4rem;text-align:center;min-width:0}
+.cell b{display:block;font-family:var(--mono);font-weight:700;font-size:clamp(2rem,8vw,4.6rem);line-height:1;color:var(--led);text-shadow:0 0 18px rgba(255,90,46,.55);font-variant-numeric:tabular-nums}
+.cell span{display:block;margin-top:.5rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:#9aa6bf}
+.quip{font-size:1.05rem;color:#d7deeb;min-height:3.2em}
+.quip strong{color:var(--taxi)}
+.nyc{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;font-family:var(--mono);font-size:.8rem;color:#9aa6bf;border-top:1px solid #26314a;padding-top:1rem}
+.nyc b{color:var(--taxi)}
+
+/* course progress */
+.course{display:grid;gap:1.6rem}
+.totals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.total{border-top:3px solid var(--ink);padding-top:.7rem;min-width:0}
+.total .k{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.total .v{font-family:var(--display);font-weight:900;font-size:clamp(2.2rem,6vw,3.4rem);line-height:1;font-variant-numeric:tabular-nums}
+.total.alt{border-color:var(--red)}.total.alt .v{color:var(--red)}
+.track{position:relative;height:56px;margin-top:.5rem}
+.road{position:absolute;inset:18px 0 auto 0;height:20px;background:var(--line);border-radius:999px;overflow:hidden}
+.road i{display:block;height:100%;width:0;background:repeating-linear-gradient(90deg,var(--red) 0 14px,var(--taxi) 14px 28px);border-radius:999px}
+.runner{position:absolute;top:0;transform:translateX(-50%);font-size:0;width:56px;height:56px}
+.runner svg{width:56px;height:56px}
+.kms{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.status{font-size:1.05rem}
+
+/* bet */
+.bet{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:start}
+.bet .copy{display:grid;gap:1rem;min-width:0}
+.ledger{background:var(--card);border:2px solid var(--ink);border-radius:14px;overflow:hidden}
+.ledger table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.ledger th,.ledger td{padding:.85rem 1rem;text-align:left;border-bottom:1px solid var(--line)}
+.ledger th{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.ledger td.win{color:var(--red);font-weight:800}
+.ledger tr:last-child td{border-bottom:0}
+.ledger caption{caption-side:bottom;padding:.8rem 1rem;font-size:.85rem;color:var(--muted);text-align:left;border-top:1px solid var(--line)}
+
+/* team */
+.team{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2rem;margin-top:2rem}
+.runner-card{background:var(--card);border:2px solid var(--ink);border-radius:14px;padding:1.3rem;display:grid;gap:.9rem;align-content:start}
+.runner-card:nth-child(1){transform:rotate(-1.2deg)}
+.runner-card:nth-child(3){transform:rotate(1deg)}
+.photo{aspect-ratio:3/4;max-width:100%;border-radius:8px;background:repeating-linear-gradient(135deg,var(--paper) 0 10px,var(--line) 10px 11px);display:grid;place-items:center;font-family:var(--mono);font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.photo{overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover;object-position:50% 18%;display:block}
+.tag{display:inline-block;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .55rem;border-radius:4px;background:var(--taxi);color:#16213a;font-weight:700;justify-self:start}
+.tag.red{background:var(--red);color:var(--on-accent)}
+.stats{display:grid;gap:.35rem;margin:0;font-size:.92rem}
+.stats div{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px dotted var(--line);padding-bottom:.3rem}
+.stats dt{color:var(--muted)}.stats dd{margin:0;font-weight:600;text-align:right}
+
+/* predictor */
+.predict{background:var(--card);border:2px solid var(--ink);border-radius:14px;padding:clamp(1.3rem,3vw,2rem);display:grid;gap:1rem}
+.predict output{font-family:var(--display);font-weight:900;font-size:clamp(3rem,10vw,5rem);line-height:1;font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--red)}
+.verdict{font-size:1.1rem;min-height:3em}
+
+/* log */
+.log{display:grid;gap:.8rem;margin-top:2rem}
+.entry{display:grid;grid-template-columns:7rem 1fr;gap:1rem;padding-block:1rem;border-top:1px solid var(--line)}
+.entry .wk{font-family:var(--mono);font-size:.78rem;color:var(--red);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.entry p{min-width:0}
+.sample{font-family:var(--mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+
+/* tiers */
+.tiers{display:grid;grid-template-columns:repeat(auto-fill,minmax(14rem,1fr));gap:1rem;margin-top:2rem}
+.tier{border-top:3px solid var(--ink);padding-top:.8rem;display:grid;gap:.35rem;align-content:start}
+.tier .amt{font-family:var(--display);font-weight:900;font-size:2.4rem;line-height:1;font-variant-numeric:tabular-nums}
+.tier .nm{font-weight:800;text-transform:uppercase;font-size:.85rem;letter-spacing:.08em;color:var(--red)}
+.tier p{font-size:.95rem;color:var(--muted)}
+
+/* sponsors */
+.sponsors{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.2rem;margin-top:2rem}
+.pkg.sole{background:var(--ink);border-color:var(--ink);transform:rotate(1deg)}
+.pkg.sole .amt,.pkg.sole p{color:var(--paper)}
+.pkg.sole .nm{color:var(--taxi)}
+@media (max-width:1040px){.sponsors{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.pkg{background:var(--card);border:2px solid var(--ink);border-radius:14px;padding:1.4rem;display:grid;gap:.5rem;align-content:start}
+.pkg .amt{font-family:var(--display);font-weight:900;font-size:clamp(2.6rem,6vw,3.4rem);line-height:1;font-variant-numeric:tabular-nums}
+.pkg .nm{font-weight:800;text-transform:uppercase;font-size:.85rem;letter-spacing:.08em;color:var(--red)}
+.pkg p{color:var(--muted);font-size:.97rem}
+.pkg.mid{transform:rotate(-1deg)}
+.pkg.hot{background:var(--red);border-color:var(--red)}
+.pkg.hot .amt,.pkg.hot p,.pkg.hot .nm{color:var(--on-accent)}
+@media (max-width:620px){.sponsors{grid-template-columns:1fr}.pkg.mid,.pkg.sole{transform:none}}
+
+/* cause */
+.cause{background:var(--ink);color:var(--paper);border-radius:18px;padding:clamp(1.6rem,5vw,3rem);display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:center}
+.cause h2{color:var(--paper)}
+.cause p{color:var(--paper);opacity:.85;max-width:38rem}
+.cause .eyebrow{color:var(--taxi)}
+.cause .btn{background:var(--taxi);color:#16213a}
+.places{display:flex;flex-wrap:wrap;gap:.4rem}
+.places span{font-family:var(--mono);font-size:.72rem;border:1px solid currentColor;border-radius:999px;padding:.25rem .6rem;opacity:.85}
+
+/* faq */
+.faq{display:grid;gap:0;margin-top:2rem;max-width:46rem}
+details{border-top:1px solid var(--line);padding-block:1rem}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:800;font-size:1.1rem;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--mono);color:var(--red)}
+details[open] summary::after{content:"–"}
+details p{margin-top:.6rem;color:var(--muted);max-width:40rem}
+
+footer{border-top:2px solid var(--ink);padding-block:2.5rem 3rem}
+footer .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:2rem}
+.pledge{font-family:var(--mono);font-size:.82rem;line-height:1.7;color:var(--muted);border-left:3px solid var(--red);padding-left:1rem}
+.foot-meta{display:grid;gap:.6rem;font-size:.88rem;color:var(--muted);align-content:start}
+
+@media (max-width:820px){
+  .hero .wrap,.bet,.cause,footer .wrap{grid-template-columns:1fr}
+  .team{grid-template-columns:1fr}
+  .runner-card{transform:none!important}
+  .bib{transform:rotate(1.5deg);max-width:22rem}
+}
+@media (max-width:520px){
+  .totals{grid-template-columns:1fr}
+  .entry{grid-template-columns:1fr;gap:.3rem}
+  .bar .btn{padding:.5rem .9rem}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap">
+    <a class="logo" href="#top">Dad's Got <span>Guts</span></a>
+    <a class="btn sm" href="https://keepachildalive.gofundraise.com" target="_blank" rel="noopener">Donate</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="copy">
+        <p class="eyebrow">Tokyo + New York · 2027 · For Keep a Child Alive</p>
+        <h1>Two marathons. One dad. <em>Some guts.</em></h1>
+        <p class="lede">I'm 52. My body is less "marathon runner" and more "drives to the letterbox". I'm carrying a few extra kilos, mostly in the shape of croissants, and my knees make a noise when I stand up. In 2027 I'm running Tokyo and New York anyway, with two of my children, who have 30 years, all of their cartilage and none of my love handles on me. We're raising $50,000 for Keep a Child Alive.</p>
+        <p class="lede"><strong style="color:var(--ink)">The bet:</strong> if I don't finish both races, I donate double whatever we raise. If I don't survive them, my estate does. Either way, the kids win.</p>
+        <div class="ctas">
+          <a class="btn" href="https://keepachildalive.gofundraise.com" target="_blank" rel="noopener">Bet against me →</a>
+          <a class="btn ghost" href="#bet">How the bet works</a>
+        </div>
+        <p class="fine">All donations go straight to Keep a Child Alive. None of it goes to my physio, though he has asked.</p>
+      </div>
+
+      <div class="bib" aria-label="Race bib for AJ, number 52">
+        <i class="pin a"></i><i class="pin b"></i><i class="pin c"></i><i class="pin d"></i>
+        <div class="bib-top"><span>Marathon 2027</span><span>Wave: last</span></div>
+        <div class="bib-num">52</div>
+        <div class="bib-name">AJ "Guts" Priester</div>
+        <div class="bib-band"><i></i><i></i></div>
+        <div class="bib-strip"><span>Age group <b>M50–54</b></span><span>Corral <b>Z</b></span><span>Medical <b>On file</b></span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="countdown" style="padding-top:0">
+    <div class="wrap">
+      <div class="clock" role="timer" aria-live="off">
+        <div class="clock-head">
+          <div class="stack" style="gap:.6rem">
+            <p class="eyebrow">Start gun · Tokyo Marathon · Sun 7 March 2027, 9:10am JST</p>
+            <h2>Time until Dad regrets this</h2>
+          </div>
+        </div>
+        <div class="digits">
+          <div class="cell"><b id="d">000</b><span>Days</span></div>
+          <div class="cell"><b id="h">00</b><span>Hours</span></div>
+          <div class="cell"><b id="m">00</b><span>Minutes</span></div>
+          <div class="cell"><b id="s">00</b><span>Seconds</span></div>
+        </div>
+        <p class="quip" id="quip"><strong>Training status:</strong> loading excuses…</p>
+        <div class="nyc">
+          <span>Then New York: <b id="nyc">— days</b> to Sun 7 Nov 2027</span>
+          <span>Age at Tokyo: <b>52</b></span>
+          <span>Age at New York: <b>53</b>, and feeling every one</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="course" style="padding-top:0">
+    <div class="wrap course">
+      <div class="stack">
+        <p class="eyebrow">The fundraising course</p>
+        <h2>$50,000 is 42.195 km</h2>
+        <p class="lede">Every $1,185 moves Dad one kilometre down the course. He has trained for this exact amount of movement.</p>
+      </div>
+      <div class="totals">
+        <div class="total"><div class="k">Raised so far</div><div class="v" id="raised">$0</div></div>
+        <div class="total"><div class="k">Goal</div><div class="v">$50,000</div></div>
+        <div class="total alt"><div class="k">If Dad fails, KCA gets</div><div class="v" id="double">$0</div></div>
+      </div>
+      <div>
+        <div class="track" aria-hidden="true">
+          <div class="road"><i id="fill"></i></div>
+          <div class="runner" id="runner">
+            <svg viewBox="0 0 56 56"><circle cx="28" cy="28" r="22" fill="var(--ink)"/><text x="28" y="35" text-anchor="middle" font-family="Big Shoulders Display, Impact, sans-serif" font-weight="900" font-size="20" fill="var(--paper)">AJ</text></svg>
+          </div>
+        </div>
+        <div class="kms"><span>Start</span><span>10 km</span><span>21.1 km</span><span>30 km</span><span>Finish</span></div>
+      </div>
+      <p class="status" id="status"></p>
+    </div>
+  </section>
+
+  <section id="bet" style="padding-top:0">
+    <div class="wrap bet">
+      <div class="copy">
+        <p class="eyebrow">Double or nothing</p>
+        <h2>You literally cannot lose. I can.</h2>
+        <p>Donate any amount. If I cross both finish lines inside the cut-off, Keep a Child Alive keeps your donation. If I don't, I match the entire total raised, so every dollar counts twice.</p>
+        <p>If I don't make it at all, my estate pays. My children are aware. They have started leaving obstacles on the stairs.</p>
+        <p class="fine">The pledge is signed, witnessed and filed with my will. Full wording at the bottom of the page.</p>
+      </div>
+      <div class="ledger">
+        <table>
+          <thead><tr><th>You donate</th><th>Dad finishes</th><th>Dad doesn't</th></tr></thead>
+          <tbody>
+            <tr><td>$50</td><td>$50</td><td class="win">$100</td></tr>
+            <tr><td>$250</td><td>$250</td><td class="win">$500</td></tr>
+            <tr><td>$1,000</td><td>$1,000</td><td class="win">$2,000</td></tr>
+            <tr><td>Everyone, $50,000</td><td>$50,000</td><td class="win">$100,000</td></tr>
+          </tbody>
+          <caption>What Keep a Child Alive receives in each outcome.</caption>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="team" style="padding-top:0">
+    <div class="wrap">
+      <p class="eyebrow">The field</p>
+      <h2>Meet the team</h2>
+      <div class="team">
+        <article class="runner-card">
+          <div class="dadcam">
+            <div class="frame">
+              <img id="dadFresh" src="aj-fresh.jpg" alt="Caricature of AJ running happily, fist pumping, in a RUNNER singlet">
+              <img id="dadWrecked" src="aj-wrecked.jpg" alt="Caricature of AJ red-faced, drenched in sweat and staggering, while younger runners overtake him" class="off">
+              <span class="minibib" aria-hidden="true"><small>Bib</small>52</span>
+              <span class="meter" id="meterTag">0 m</span>
+            </div>
+            <div class="slide">
+              <label for="dist">Drag Dad down the course <span class="hint" aria-hidden="true">Drag →</span></label>
+              <input id="dist" type="range" min="0" max="1000" step="1" value="0" aria-describedby="distNote">
+              <div class="kms"><span>Start</span><span>42.195 km</span></div>
+              <p id="distNote" class="dist-note">Start line. Feeling fantastic. Has never looked better.</p>
+            </div>
+          </div>
+          <span class="tag red">The liability</span>
+          <h3>AJ</h3>
+          <dl class="stats">
+            <div><dt>Age</dt><dd>52</dd></div>
+            <div><dt>Marathons completed</dt><dd>1 (mentions it daily)</dd></div>
+            <div><dt>Personal best</dt><dd>4:14 (also his worst)</dd></div>
+            <div><dt>Strengths</dt><dd>Spreadsheets, pacing the buffet</dd></div>
+            <div><dt>Race strategy</dt><dd>Start slow, then taper off</dd></div>
+          </dl>
+        </article>
+        <article class="runner-card">
+          <div class="photo"><img src="ivy.jpg" alt="Caricature of Ivy running through a park, being towed along by her scruffy terrier George on a lead" loading="lazy"></div>
+          <span class="tag">The pacer</span>
+          <h3>Ivy</h3>
+          <dl class="stats">
+            <div><dt>Years younger than Dad</dt><dd>27</dd></div>
+            <div><dt>Training partner</dt><dd>George the dog, who sets the pace</dd></div>
+            <div><dt>Patience with father</dt><dd>Declining weekly</dd></div>
+            <div><dt>Role on race day</dt><dd>Read Dad his messages at km 21</dd></div>
+            <div><dt>Likely finish</dt><dd>Well before Dad</dd></div>
+          </dl>
+        </article>
+        <article class="runner-card">
+          <div class="photo"><img src="richie.jpg" alt="Caricature of Richie jogging calmly through a park, smiling, not a drop of sweat" loading="lazy"></div>
+          <span class="tag">The closer</span>
+          <h3>Richie</h3>
+          <dl class="stats">
+            <div><dt>Years younger than Dad</dt><dd>30</dd></div>
+            <div><dt>Recovery time</dt><dd>One sleep</dd></div>
+            <div><dt>Dad's recovery time</dt><dd>One fiscal quarter</dd></div>
+            <div><dt>Role on race day</dt><dd>Wait at finish, film everything</dd></div>
+            <div><dt>Likely finish</dt><dd>Before Dad's first gel</dd></div>
+          </dl>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="predict" style="padding-top:0">
+    <div class="wrap bet">
+      <div class="copy">
+        <p class="eyebrow">Place your bets</p>
+        <h2>Predict Dad's Tokyo time</h2>
+        <p>Dad's one and only marathon took <strong>4 hours 14 minutes</strong>. He has since aged, eaten and stopped stretching. Drag the slider to your honest estimate. The closest guess from donors gets a shout-out on Instagram and an apology from Dad.</p>
+        <a class="btn" href="https://keepachildalive.gofundraise.com" target="_blank" rel="noopener" style="justify-self:start">Lock it in with a donation</a>
+      </div>
+      <div class="predict">
+        <label for="time" class="eyebrow" style="color:var(--muted)">My prediction</label>
+        <output id="timeOut" for="time">5:30</output>
+        <input id="time" type="range" min="200" max="440" step="5" value="330" aria-describedby="verdict">
+        <div class="kms"><span>3:20</span><span>7:20</span></div>
+        <p class="verdict" id="verdict"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="log" style="padding-top:0">
+    <div class="wrap">
+      <p class="eyebrow">The Dad Report</p>
+      <h2>Training log</h2>
+      <p class="lede" style="margin-top:1rem">Filed weekly, in the format Dad knows best: the quarterly update.</p>
+      <div class="log">
+        <p class="sample">Sample entries · real reports start at launch</p>
+        <div class="entry"><span class="wk">Week 1</span><p>Kilometres up 100% on last week, which was zero. Knees have issued a profit warning. Management remains confident.</p></div>
+        <div class="entry"><span class="wk">Week 2</span><p>Bought shoes that cost more than my first car. They have not yet made me faster. Escalated to the retailer.</p></div>
+        <div class="entry"><span class="wk">Week 3</span><p>Ivy and Richie ran with me. Ivy finished, stretched and bought coffee. Richie filmed my arrival. The footage is under legal review.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tiers" style="padding-top:0">
+    <div class="wrap">
+      <p class="eyebrow">Ways to give</p>
+      <h2>Pick your tier</h2>
+      <div class="tiers">
+        <div class="tier"><span class="amt">$25</span><span class="nm">Water station</span><p>Your name on the site. I'll think of you somewhere around km 31.</p></div>
+        <div class="tier"><span class="amt">$52</span><span class="nm">The birthday</span><p>One dollar per year of Dad. A shout-out in the next Dad Report.</p></div>
+        <div class="tier"><span class="amt">$100</span><span class="nm">Hamstring sponsor</span><p>Choose which body part I dedicate a training run to.</p></div>
+        <div class="tier"><span class="amt">$250</span><span class="nm">Race marshal</span><p>Write the message the kids read to me at halfway.</p></div>
+        <div class="tier"><span class="amt">$500</span><span class="nm">The bookmaker</span><p>Set my target time. Beat it, you get a video. Miss it, I do your forfeit.</p></div>
+        <div class="tier"><span class="amt">$1,000</span><span class="nm">Estate planner</span><p>Your name on my race singlet, plus a framed copy of the pledge.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sponsors" style="padding-top:0">
+    <div class="wrap">
+      <p class="eyebrow">Corporate partnerships</p>
+      <h2>Put your brand on Dad. Or don't.</h2>
+      <p class="lede" style="margin-top:1rem">Four packages for businesses, each one a donation to Keep a Child Alive. Choose based on how much you value your reputation.</p>
+      <div class="sponsors">
+        <article class="pkg">
+          <span class="amt">$5,000</span>
+          <span class="nm">The Sponsor</span>
+          <p>Your logo on my chest for both races. Millions of spectators, thousands of photos, and every one of them shows a sweaty 52-year-old wearing your brand. Results not guaranteed.</p>
+        </article>
+        <article class="pkg mid">
+          <span class="amt">$10,000</span>
+          <span class="nm">The Distance Clause</span>
+          <p>I promise never to wear your logo. Your brand will not be photographed with me collapsing on the Queensboro Bridge. Some reputations are worth protecting.</p>
+        </article>
+        <article class="pkg hot">
+          <span class="amt">$15,000</span>
+          <span class="nm">The Hostile Takeover</span>
+          <p>I wear your competitor's logo instead. Their name, my face, km 38, the medical tent. You can't buy marketing like this. Actually you can. It's $15,000.</p>
+        </article>
+        <article class="pkg sole">
+          <span class="amt">$20,000</span>
+          <span class="nm">The Sole Partner</span>
+          <p>Your logo on the soles of my sneakers. Invisible while I'm running. Seen by millions if the video of paramedics loading me into the ambulance goes viral. Feet up, brand up.</p>
+        </article>
+      </div>
+      <p class="fine" style="margin-top:1rem">Logos subject to race kit rules, good taste and my lawyer's nerves. Competitor chosen by you, approved by Dad.</p>
+    </div>
+  </section>
+
+  <section id="cause" style="padding-top:0">
+    <div class="wrap">
+      <div class="cause">
+        <div class="stack">
+          <p class="eyebrow">Where the money goes</p>
+          <h2>Keep a Child Alive</h2>
+          <p>The jokes are about me. This part isn't. Keep a Child Alive is a global nonprofit protecting children and families through healthcare, education, safety and newborn survival. It works with grassroots partners who know their communities best, and every dollar raised here goes directly to them.</p>
+          <div class="places"><span>South Africa</span><span>Uganda</span><span>Kenya</span><span>Malawi</span><span>Rwanda</span><span>Tanzania</span><span>Zimbabwe</span><span>Eswatini</span><span>India</span></div>
+        </div>
+        <div class="stack" style="justify-items:start">
+          <a class="btn" href="https://www.keepachildalive.org/" target="_blank" rel="noopener">Learn about KCA</a>
+          <a class="btn" href="https://keepachildalive.gofundraise.com" target="_blank" rel="noopener">Donate now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" style="padding-top:0">
+    <div class="wrap">
+      <p class="eyebrow">Questions</p>
+      <h2>Frequently asked</h2>
+      <div class="faq">
+        <details><summary>Will you actually die?</summary><p>Statistically, very unlikely. Emotionally, around km 35, yes. I've had a full medical and my GP has cleared me, with a look on his face I'm still thinking about.</p></details>
+        <details><summary>Why should I donate if you're going to finish?</summary><p>Because the money goes to children who need it either way. The bet only decides whether it goes once or twice.</p></details>
+        <details><summary>What counts as "finishing"?</summary><p>Crossing the official finish line of both races inside the cut-off. Crawling counts. Being carried does not.</p></details>
+        <details><summary>Is my donation tax deductible?</summary><p>Keep a Child Alive is a US 501(c)(3) charity, so donations get a US receipt. Australian donors can't currently claim a tax deduction. I'm working with KCA on an Australian option and will update this page if one opens up.</p></details>
+        <details><summary>Why are your children doing this?</summary><p>For the cause, and to make sure someone is there to film it when I sit down on the Brooklyn Bridge.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="stack">
+      <p class="eyebrow">The pledge</p>
+      <p class="pledge">I, Adam Joshua Priester, undertake that if I do not complete both the Tokyo Marathon (7 March 2027) and the TCS New York City Marathon (7 November 2027), I will donate to Keep a Child Alive an amount equal to the total raised through this campaign, in addition to the funds already raised, within 90 days of the New York Marathon. If I am unable to do so, I direct my executors to make that payment from my estate.</p>
+    </div>
+    <div class="foot-meta">
+      <a class="logo" href="#top">Dad's Got <span>Guts</span></a>
+      <p>Donations are made directly to Keep a Child Alive, a US 501(c)(3) nonprofit. This campaign is run by AJ Priester and family, not by KCA.</p>
+      <p>Follow the training on Instagram: <a href="https://www.instagram.com/dadsgotguts_run/" target="_blank" rel="noopener"><strong>@dadsgotguts_run</strong></a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ===== Update these as the campaign moves =====
+  var RAISED = 0;            // dollars raised so far
+  var GOAL = 50000;
+  // ==============================================
+  var TOKYO = Date.UTC(2027,2,7,0,10,0);   // 9:10am JST
+  var NYC   = Date.UTC(2027,10,7,14,10,0); // ~9:10am EST, first wave
+  var quips = [
+    "<strong>Training status:</strong> foam roller purchased. Not yet unwrapped.",
+    "<strong>Projected finish:</strong> ahead of the sweeper bus. Ideally.",
+    "<strong>Carb-loading:</strong> started early. Possibly too early. In 2019.",
+    "<strong>Knees:</strong> under review by the Board.",
+    "<strong>Kids' prediction:</strong> they'll be at lunch when Dad finishes.",
+    "<strong>Fuel strategy:</strong> gels, bananas and spite.",
+    "<strong>Japanese learned so far:</strong> “Where is the medical tent?”"
+  ];
+  var qi = 0, quipEl = document.getElementById('quip');
+  function pad(n,l){n=String(n);while(n.length<l)n='0'+n;return n}
+  function tick(){
+    var now = Date.now(), diff = Math.max(0, TOKYO-now);
+    var d = Math.floor(diff/864e5), h = Math.floor(diff%864e5/36e5), m = Math.floor(diff%36e5/6e4), s = Math.floor(diff%6e4/1e3);
+    document.getElementById('d').textContent = pad(d,3);
+    document.getElementById('h').textContent = pad(h,2);
+    document.getElementById('m').textContent = pad(m,2);
+    document.getElementById('s').textContent = pad(s,2);
+    var nd = Math.max(0, Math.ceil((NYC-now)/864e5));
+    document.getElementById('nyc').textContent = nd + ' days';
+    if(diff===0) quipEl.innerHTML = "<strong>Tokyo:</strong> he's out there. Send help, or money.";
+  }
+  function rotate(){ if(Date.now()<TOKYO){ quipEl.innerHTML = quips[qi%quips.length]; qi++; } }
+  tick(); rotate(); setInterval(tick,1000); setInterval(rotate,5000);
+
+  // course progress
+  var fmt = function(n){return '$'+n.toLocaleString('en-AU')};
+  var pct = Math.min(1, RAISED/GOAL), km = (pct*42.195).toFixed(1);
+  document.getElementById('raised').textContent = fmt(RAISED);
+  document.getElementById('double').textContent = fmt(RAISED*2);
+  document.getElementById('fill').style.width = (pct*100)+'%';
+  document.getElementById('runner').style.left = 'calc(28px + (100% - 56px) * '+pct+')';
+  var st = pct===0 ? "Dad is at km 0, still stretching and checking his watch. Be the first donor and get him moving."
+         : pct<.5 ? "Dad is at km "+km+". Upright, mostly."
+         : pct<.75 ? "Dad is at km "+km+". This is where the wall lives."
+         : pct<1 ? "Dad is at km "+km+". He can see the finish. He can't feel his legs."
+         : "Finish line. $50,000 raised. Dad is lying down. Thank you.";
+  document.getElementById('status').textContent = st;
+
+  // dad-cam: slider position t (0..1) maps to metres on a cubic curve so the first 120 m gets real travel
+  var dist = document.getElementById('dist'), fresh = document.getElementById('dadFresh'), wrecked = document.getElementById('dadWrecked'),
+      meterTag = document.getElementById('meterTag'), note = document.getElementById('distNote');
+  var notes = [
+    [0,    "Start line. Feeling fantastic. Has never looked better."],
+    [40,   "Waving to the crowd. Considering a career in professional sport."],
+    [90,   "Still looking like the poster. Enjoy this while it lasts."],
+    [120,  "Ah. There it is. 120 metres."],
+    [500,  "Has asked a spectator what year it is."],
+    [2000, "Overtaken by a man dressed as a sushi roll."],
+    [10000,"10 km. Both children are now out of sight."],
+    [21097,"Halfway. Reading donor messages. Crying a bit."],
+    [30000,"30 km. The wall. Dad is leaning on it."],
+    [38000,"Paramedics are walking alongside, 'just in case'."],
+    [42195,"FINISHED. Pledge void. Money kept. Thank you."]
+  ];
+  function updDist(){
+    var t = dist.value/1000, m = Math.round(42195*t*t*t);
+    meterTag.textContent = m < 1000 ? m+' m' : (m/1000).toFixed(m>=42195?3:1)+' km';
+    var wreck = m >= 120;
+    fresh.classList.toggle('off', wreck); wrecked.classList.toggle('off', !wreck);
+    var txt = notes[0][1]; for (var i=0;i<notes.length;i++){ if (m >= notes[i][0]) txt = notes[i][1]; }
+    note.textContent = txt;
+    dist.setAttribute('aria-valuetext', meterTag.textContent);
+  }
+  dist.addEventListener('input', function(){ dist.parentNode.classList.add('used'); updDist(); }); updDist();
+
+  // predictor
+  var r = document.getElementById('time'), out = document.getElementById('timeOut'), v = document.getElementById('verdict');
+  function verdict(min){
+    if(min<240) return "Faster than his 4:14 PB. Very generous. Dad is printing this and framing it.";
+    if(min<254) return "A new PB. Bold. Dad's knees would like a word.";
+    if(min<270) return "Right around his 4:14. You believe in him. Nobody else does.";
+    if(min<330) return "Respectable. Dad would take this and never stop talking about it.";
+    if(min<375) return "Realistic. The kids are nodding.";
+    if(min<410) return "Brutal, but fair. Dad will finish in daylight.";
+    return "Right on the cut-off. You know him well. Too well.";
+  }
+  function upd(){ var t=+r.value; out.textContent = Math.floor(t/60)+':'+pad(t%60,2); v.textContent = verdict(t); }
+  r.addEventListener('input',upd); upd();
+})();
+</script>
+</body>
+</html>
