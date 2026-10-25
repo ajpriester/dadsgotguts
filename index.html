@@ -131,6 +131,15 @@ section{padding-block:clamp(3rem,8vw,5rem)}
 .runner svg{width:56px;height:56px}
 .kms{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums}
 .status{font-size:1.05rem}
+/* biggest supporters */
+.donors{border-top:3px solid var(--ink);padding-top:.8rem;display:grid;gap:.9rem}
+.donors .k{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.donor{display:grid;grid-template-columns:auto 1fr;gap:.2rem .8rem;align-items:baseline}
+.donor .amt{font-family:var(--display);font-weight:900;font-size:1.5rem;line-height:1;color:var(--red);font-variant-numeric:tabular-nums}
+.donor .who{font-weight:700;color:var(--ink)}
+.donor .who a{color:var(--red);text-decoration:none;font-family:var(--mono);font-size:.8rem;font-weight:700}
+.donor .who a:hover{text-decoration:underline}
+.donor .why{grid-column:2;font-size:.95rem;color:var(--muted);margin:0}
 
 /* bet */
 .bet{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:start}
@@ -248,7 +257,7 @@ footer .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:2rem}
         <p class="lede"><strong style="color:var(--ink)">The bet:</strong> if I don't finish both races, I donate double whatever we raise. If I don't survive them, my estate does. Either way, the kids win.</p>
         <div class="ctas">
           <a class="btn" href="https://teamkcatokyo2027.gofundraise.com/payments/donate/page/2629554" target="_blank" rel="noopener">Bet against me →</a>
-          <a class="btn ghost" href="#bet">How the bet works</a>
+          <a class="btn ghost" href="#pledge">How the bet works</a>
         </div>
         <p class="fine">All donations go straight to Keep a Child Alive. None of it goes to my physio, though he has asked.</p>
       </div>
@@ -295,28 +304,19 @@ footer .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:2rem}
           <div class="kms"><span>Start</span><span>21.1 km</span><span>Finish</span></div>
         </div>
         <p class="status" id="status"></p>
-      </div>
-    </div>
-  </section>
-
-  <section id="bet" style="padding-top:0">
-    <div class="wrap bet">
-      <div class="copy">
-        <p class="eyebrow">Double or nothing</p>
-        <h2>You literally cannot lose. I can.</h2>
-        <p>If I finish both races, Keep a Child Alive keeps your donation. If I don't, I match the entire total, so every dollar counts twice. Signed, witnessed and filed with my will.</p>
-      </div>
-      <div class="ledger">
-        <table>
-          <thead><tr><th>You donate</th><th>Dad finishes</th><th>Dad doesn't</th></tr></thead>
-          <tbody>
-            <tr><td>$50</td><td>$50</td><td class="win">$100</td></tr>
-            <tr><td>$250</td><td>$250</td><td class="win">$500</td></tr>
-            <tr><td>$1,000</td><td>$1,000</td><td class="win">$2,000</td></tr>
-            <tr><td>Everyone, US$50,000</td><td>$50,000</td><td class="win">$100,000</td></tr>
-          </tbody>
-          <caption>What Keep a Child Alive receives in each outcome.</caption>
-        </table>
+        <div class="donors">
+          <div class="k">Biggest supporters so far</div>
+          <div class="donor">
+            <span class="amt">$500</span>
+            <span class="who">Adrian Gonzalez <a href="https://www.instagram.com/adrian_eltitan/" target="_blank" rel="noopener">@adrian_eltitan</a></span>
+            <p class="why">Five-time All-Star, four Gold Gloves, and now the first man to back a 52-year-old who runs like he's carrying all four bases. Thank you, Adrian.</p>
+          </div>
+          <div class="donor">
+            <span class="amt">$500</span>
+            <span class="who">Paul Bassat <a href="https://www.instagram.com/paulbassat/" target="_blank" rel="noopener">@paulbassat</a></span>
+            <p class="why">Has backed some of Australia's best founders, and now backing a dad, past his prime with bad knees. Thank you, Paul.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -465,7 +465,7 @@ footer .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:2rem}
   </section>
 </main>
 
-<footer>
+<footer id="pledge">
   <div class="wrap">
     <div class="stack">
       <p class="eyebrow">The pledge</p>
@@ -482,7 +482,7 @@ footer .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:2rem}
 <script>
 (function(){
   // ===== Update these as the campaign moves =====
-  var RAISED = 0;            // dollars raised so far
+  var RAISED = 1980;         // dollars raised so far (GoFundRaise, 25 Oct 2026)
   var GOAL = 50000;
   // ==============================================
   var TOKYO = Date.UTC(2027,2,7,0,10,0);   // 9:10am JST
