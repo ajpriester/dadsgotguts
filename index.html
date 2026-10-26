@@ -113,16 +113,17 @@ section{padding-block:clamp(3rem,8vw,5rem)}
 .combo > *{min-width:0}
 .combo .cell b{font-size:clamp(1.8rem,5vw,3.4rem)}
 .coursecard{background:var(--card);border:2px solid var(--ink);border-radius:18px;padding:clamp(1.5rem,4vw,2.2rem);display:grid;gap:1.2rem;align-content:center}
-.coursecard .totals{grid-template-columns:repeat(2,minmax(0,1fr))}
+.coursecard .totals{grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem;container-type:inline-size}
 .subhead{font-size:1.2rem;margin-top:2rem;color:var(--muted)}
 @media (max-width:900px){.combo{grid-template-columns:1fr}}
 
 /* course progress */
 .course{display:grid;gap:1.6rem}
 .totals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
-.total{border-top:3px solid var(--ink);padding-top:.7rem;min-width:0}
-.total .k{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.total .v{font-family:var(--display);font-weight:900;font-size:clamp(2.2rem,6vw,3.4rem);line-height:1;font-variant-numeric:tabular-nums}
+.total{border-top:3px solid var(--ink);padding-top:.7rem;min-width:0;display:flex;flex-direction:column;gap:.5rem}
+.total .k{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;line-height:1.4;text-transform:uppercase;color:var(--muted)}
+.total .v{font-family:var(--display);font-weight:900;font-size:clamp(2.2rem,6vw,3.4rem);line-height:1;font-variant-numeric:tabular-nums;margin-top:auto}
+.coursecard .total .v{font-size:clamp(1.8rem,11cqw,3.2rem)}
 .total.alt{border-color:var(--red)}.total.alt .v{color:var(--red)}
 .track{position:relative;height:56px;margin-top:.5rem}
 .road{position:absolute;inset:18px 0 auto 0;height:20px;background:var(--line);border-radius:999px;overflow:hidden}
@@ -233,7 +234,7 @@ footer .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:2rem}
   .bib{transform:rotate(1.5deg);max-width:22rem}
 }
 @media (max-width:520px){
-  .totals{grid-template-columns:1fr}
+  .totals,.coursecard .totals{grid-template-columns:1fr;gap:1.2rem}
   .entry{grid-template-columns:1fr;gap:.3rem}
   .bar .btn{padding:.5rem .9rem}
 }
@@ -243,7 +244,7 @@ footer .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:2rem}
 <header class="bar">
   <div class="wrap">
     <a class="logo" href="#top">Dad's Got <span>Guts</span></a>
-    <a class="btn sm" href="https://teamkcatokyo2027.gofundraise.com/payments/donate/page/2629554" target="_blank" rel="noopener">Donate</a>
+    <a class="btn sm" href="https://teamkcatokyo2027.gofundraise.com/page/Adam-92601532" target="_blank" rel="noopener">Donate</a>
   </div>
 </header>
 
@@ -256,7 +257,7 @@ footer .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:2rem}
         <p class="lede">I'm 52. My body is less "marathon runner" and more "drives to the letterbox". I'm carrying a few extra kilos, mostly in the shape of croissants, and my knees make a noise when I stand up. In 2027 I'm running Tokyo and New York anyway, with two of my children, who have 30 years, all of their cartilage and none of my love handles on me. We're raising US$50,000 for Keep a Child Alive. (All amounts on this page are in US dollars.)</p>
         <p class="lede"><strong style="color:var(--ink)">The bet:</strong> if I don't finish both races, I donate double whatever we raise. If I don't survive them, my estate does. Either way, the kids win.</p>
         <div class="ctas">
-          <a class="btn" href="https://teamkcatokyo2027.gofundraise.com/payments/donate/page/2629554" target="_blank" rel="noopener">Bet against me →</a>
+          <a class="btn" href="https://teamkcatokyo2027.gofundraise.com/page/Adam-92601532" target="_blank" rel="noopener">Bet against me →</a>
         </div>
         <p class="fine">All donations go straight to Keep a Child Alive. None of it goes to my physio, though he has asked.</p>
       </div>
@@ -384,7 +385,7 @@ footer .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:2rem}
         <p class="eyebrow">Place your bets</p>
         <h2>Predict Dad's Tokyo time</h2>
         <p>Dad's one and only marathon took <strong>4 hours 14 minutes</strong>. He has since aged, eaten and stopped stretching. Drag the slider to your honest estimate. The closest guess from donors gets a shout-out on Instagram and an apology from Dad.</p>
-        <a class="btn" href="https://teamkcatokyo2027.gofundraise.com/payments/donate/page/2629554" target="_blank" rel="noopener" style="justify-self:start">Lock it in with a donation</a>
+        <a class="btn" href="https://teamkcatokyo2027.gofundraise.com/page/Adam-92601532" target="_blank" rel="noopener" style="justify-self:start">Lock it in with a donation</a>
       </div>
       <div class="predict">
         <label for="time" class="eyebrow" style="color:var(--muted)">My prediction</label>
@@ -445,7 +446,7 @@ footer .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:2rem}
         </div>
         <div class="stack" style="justify-items:start">
           <a class="btn" href="https://www.keepachildalive.org/" target="_blank" rel="noopener">Learn about KCA</a>
-          <a class="btn" href="https://teamkcatokyo2027.gofundraise.com/payments/donate/page/2629554" target="_blank" rel="noopener">Donate now</a>
+          <a class="btn" href="https://teamkcatokyo2027.gofundraise.com/page/Adam-92601532" target="_blank" rel="noopener">Donate now</a>
         </div>
       </div>
     </div>
